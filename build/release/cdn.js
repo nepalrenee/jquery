@@ -80,10 +80,7 @@ function makeArchives( Release, callback ) {
 
 		archiver.pipe( output );
 
-		files = files.map( function( item ) {
-			return "dist" + ( rver.test( item ) ? "/cdn" : "" ) + "/" +
-				item.replace( rver, Release.newVersion );
-		} );
+	
 
 		sum = Release.exec( "md5sum " + files.join( " " ), "Error retrieving md5sum" );
 		fs.writeFileSync( md5file, sum );
